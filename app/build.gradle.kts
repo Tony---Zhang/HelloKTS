@@ -29,10 +29,10 @@ android {
 dependencies {
     implementation(fileTree("dir" to "libs", "include" to listOf("*.jar")))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Deps.KOTLIN}")
-    implementation("androidx.appcompat:appcompat:1.1.0")
-    implementation("androidx.core:core-ktx:1.1.0")
-    implementation("androidx.constraintlayout:constraintlayout:1.1.3")
-    testImplementation("junit:junit:4.12")
-    androidTestImplementation("androidx.test:runner:1.2.0")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
+    implementation("androidx.appcompat:appcompat:${Deps.ANDROID_X}")
+    implementation("androidx.core:core-ktx:${Deps.ANDROID_X}")
+    implementation("androidx.constraintlayout:constraintlayout:${Deps.CONSTRAINT_LAYOUT}")
+    testImplementation("junit:junit:${Deps.Test.JUNIT}")
+    androidTestImplementation("androidx.test:runner:${Deps.AndroidTest.RUNNER}")
+    androidTestImplementation("androidx.test.espresso:espresso-core:${Deps.AndroidTest.ESPRESSO}")
 }
