@@ -51,7 +51,6 @@ tasks.register<Delete>("clean") {
     delete(rootProject.buildDir, "$rootDir/buildSrc/build")
 }
 
-
 task("staticCheck") {
     description = """Mimics all static checks that run on CI.
         Note that this task is intended to run locally (not on CI), because on CI we prefer to have parallel execution
