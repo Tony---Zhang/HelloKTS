@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+
+# Run static check
+echo "run static check before push"
+./gradlew staticCheck
+
+exit 0
