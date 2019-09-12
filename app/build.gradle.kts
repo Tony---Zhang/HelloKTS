@@ -1,7 +1,7 @@
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
-    id("kotlin-android-extensions")
+    id(Gradle.Plugins.ANDROID_APPLICATION)
+    id(Gradle.Plugins.KOTLIN_ANDROID)
+    id(Gradle.Plugins.KOTLIN_ANDROID_EXTENSIONS)
 }
 
 android {
