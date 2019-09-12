@@ -5,23 +5,27 @@ plugins {
 }
 
 android {
-    compileSdkVersion(29)
-    buildToolsVersion("29.0.2")
+    compileSdkVersion(AndroidConfig.COMPILE_SDK_VERSION)
+    buildToolsVersion(AndroidConfig.BUILD_TOOLS_VERSION)
     defaultConfig {
         applicationId = "com.example.hellokts"
-        minSdkVersion(24)
-        targetSdkVersion(29)
-        versionCode = 1
-        versionName = "1.0"
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        minSdkVersion(AndroidConfig.MIN_SDK_VERSION)
+        targetSdkVersion(AndroidConfig.TARGET_SDK_VERSION)
+        versionCode = AndroidConfig.VERSION_CODE
+        versionName = AndroidConfig.VERSION_NAME
+        testInstrumentationRunner = AndroidConfig.TEST_INSTRUMENTATION_RUNNER
     }
     buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
+        getByName(BuildType.RELEASE) {
+            isMinifyEnabled = BuildTypeRelease.isMinifyEnabled
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+
+        getByName(BuildType.DEBUG) {
+            isMinifyEnabled = BuildTypeDebug.isMinifyEnabled
         }
     }
 }
