@@ -1,6 +1,7 @@
 // Versions consts that are used across libraries and Gradle plugins
 object Deps {
     const val KOTLIN = "1.3.50"
+    const val KTLINT = "0.34.2"
     const val ANDROID_X = "1.1.0"
     const val CONSTRAINT_LAYOUT = "1.1.3"
 

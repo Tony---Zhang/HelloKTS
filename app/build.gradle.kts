@@ -1,7 +1,10 @@
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
+
 plugins {
     id(Gradle.Plugins.ANDROID_APPLICATION)
     id(Gradle.Plugins.KOTLIN_ANDROID)
     id(Gradle.Plugins.KOTLIN_ANDROID_EXTENSIONS)
+    id(Gradle.Plugins.KTLINT_GRADLE)
 }
 
 android {
@@ -34,6 +37,12 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        // "this" is currently lacking a proper type
+        // See: https://youtrack.jetbrains.com/issue/KT-31077
+        val options = this as? KotlinJvmOptions
+        options?.jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 }
 
