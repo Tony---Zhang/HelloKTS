@@ -25,5 +25,5 @@ allprojects {
 }
 
 tasks.register<Delete>("clean") {
-    delete(rootProject.buildDir)
+    delete(rootProject.buildDir, "$rootDir/buildSrc/build")
 }
