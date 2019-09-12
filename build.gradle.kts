@@ -61,7 +61,8 @@ task("staticCheck") {
     afterEvaluate {
         val linkTasks = subprojects.mapNotNull { "${it.name}:lintDebug" }
         val ktlinkTask = "ktlintCheck"
-        val dependTasks = listOf(linkTasks, ktlinkTask)
+        val unitTestTasks = subprojects.mapNotNull { "${it.name}:testDebugUnitTest" }
+        val dependTasks = listOf(linkTasks, ktlinkTask, unitTestTasks)
         dependsOn(dependTasks)
     }
 }
