@@ -1,10 +1,12 @@
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
+import com.google.protobuf.gradle.*
 
 plugins {
     id(Gradle.Plugins.ANDROID_APPLICATION)
     id(Gradle.Plugins.KOTLIN_ANDROID)
     id(Gradle.Plugins.KOTLIN_ANDROID_EXTENSIONS)
     id(Gradle.Plugins.KTLINT_GRADLE)
+    id(Gradle.Plugins.PROTOBUF)
 }
 
 android {
@@ -44,6 +46,33 @@ android {
         val options = this as? KotlinJvmOptions
         options?.jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+    packagingOptions {
+        exclude("proto/sample.proto")
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = Deps.Protobuf.PROTO_C
+    }
+    plugins {
+        id("grpc") {
+            artifact = Deps.Protobuf.Plugin.GRPC
+        }
+        id("javalite") {
+            artifact = Deps.Protobuf.Plugin.JAVALITE
+        }
+    }
+    generateProtoTasks {
+        all().forEach {
+            it.plugins {
+                id("grpc") {
+                    option("lite")
+                }
+                id("javalite")
+            }
+        }
+    }
 }
 
 dependencies {
@@ -52,6 +81,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:${Deps.ANDROID_X}")
     implementation("androidx.core:core-ktx:${Deps.ANDROID_X}")
     implementation("androidx.constraintlayout:constraintlayout:${Deps.CONSTRAINT_LAYOUT}")
+    implementation("com.google.protobuf:protobuf-java:${Deps.Protobuf.PROTO_VERSION}")
     testImplementation("junit:junit:${Deps.Test.JUNIT}")
     androidTestImplementation("androidx.test:runner:${Deps.AndroidTest.RUNNER}")
     androidTestImplementation("androidx.test.espresso:espresso-core:${Deps.AndroidTest.ESPRESSO}")

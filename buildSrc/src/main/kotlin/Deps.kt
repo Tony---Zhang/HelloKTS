@@ -13,4 +13,17 @@ object Deps {
         const val ESPRESSO = "3.2.0"
         const val RUNNER = "1.2.0"
     }
+
+    object Protobuf {
+        const val PROTO_VERSION = "3.7.1"
+        const val PROTO_C_GEN_JAVALITE_VERSION = "3.0.0"
+        const val GRPC_VERSION = "1.20.0"
+
+        const val PROTO_C = "com.google.protobuf:protoc:$PROTO_VERSION"
+
+        object Plugin {
+            const val GRPC = "io.grpc:protoc-gen-grpc-java:$GRPC_VERSION"
+            const val JAVALITE = "com.google.protobuf:protoc-gen-javalite:$PROTO_C_GEN_JAVALITE_VERSION"
+        }
+    }
 }

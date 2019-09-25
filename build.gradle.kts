@@ -13,6 +13,7 @@ buildscript {
         classpath(Gradle.Dependency.ANDROID_GRADLE)
         classpath(Gradle.Dependency.KOTLIN_GRADLE)
         classpath(Gradle.Dependency.KTLINT_GRADLE)
+        classpath(Gradle.Dependency.PROTOBUF_GRADLE)
     }
 }
 
